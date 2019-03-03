@@ -1,0 +1,25 @@
+{
+  "extends": ["tslint:latest", "tslint-react", "tslint-config-prettier"],
+  "linterOptions": {
+    "exclude": ["node_modules/**/*"]
+  },
+  "rules": {
+    "arrow-return-shorthand": [true, "multiline"],
+    "interface-name": false,
+    "jsx-no-multiline-js": false,
+    "member-ordering": true,
+    "no-consecutive-blank-lines": true,
+    "no-irregular-whitespace": true,
+    "no-multi-spaces": true,
+    "object-literal-sort-keys": false,
+    "ordered-imports": [
+      true,
+      {
+        "grouped-imports": {
+          "type": "boolean"
+        }
+      }
+    ],
+    "semicolon": false
+  }
+}
