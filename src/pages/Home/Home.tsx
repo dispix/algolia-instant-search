@@ -1,10 +1,11 @@
-import * as React from "react"
-import { makeStyles } from "@material-ui/styles"
 import Card from "@material-ui/core/Card"
+import { makeStyles } from "@material-ui/styles"
+import * as React from "react"
 
 import { useSearch } from "../../features/Search"
-import HomeHeader from "./HomeHeader"
+
 import HomeContent from "./HomeContent"
+import HomeHeader from "./HomeHeader"
 
 const useStyles = makeStyles({
   card: {
@@ -20,12 +21,12 @@ const useStyles = makeStyles({
 const Home = () => {
   const classes = useStyles()
   const [search, setSearch] = React.useState("")
-  const { result } = useSearch(search)
+  const { result, loadMore } = useSearch(search)
 
   return (
     <Card className={classes.card}>
       <HomeHeader result={result} search={search} onSearchChange={setSearch} />
-      <HomeContent result={result} />
+      <HomeContent result={result} onLoadMore={loadMore} />
     </Card>
   )
 }

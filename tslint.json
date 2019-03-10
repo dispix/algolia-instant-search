@@ -11,6 +11,12 @@
     "no-consecutive-blank-lines": true,
     "no-irregular-whitespace": true,
     "no-multi-spaces": true,
+    "no-submodule-imports": [
+      true,
+      "@material-ui/core",
+      "@material-ui/icons",
+      "@material-ui/styles"
+    ],
     "object-literal-sort-keys": false,
     "ordered-imports": [
       true,
