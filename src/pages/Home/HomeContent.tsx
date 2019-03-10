@@ -7,6 +7,7 @@ import { UseSearchResult } from "../../features/Search"
 
 interface HomeContentProps {
   result: UseSearchResult | null
+  onLoadMore: () => void
 }
 
 const useStyles = makeStyles({
@@ -16,12 +17,18 @@ const useStyles = makeStyles({
   },
 })
 
-const HomeContent = ({ result }: HomeContentProps) => {
+const HomeContent = ({ result, onLoadMore }: HomeContentProps) => {
   const classes = useStyles()
 
   return (
     <CardContent className={classes.cardContent}>
-      {result && <SearchResultList items={result.hits} />}
+      {result && (
+        <SearchResultList
+          items={result.hits}
+          triggerOffset={2}
+          onTriggerIn={onLoadMore}
+        />
+      )}
     </CardContent>
   )
 }

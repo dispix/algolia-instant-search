@@ -21,12 +21,12 @@ const useStyles = makeStyles({
 const Home = () => {
   const classes = useStyles()
   const [search, setSearch] = React.useState("")
-  const { result } = useSearch(search)
+  const { result, loadMore } = useSearch(search)
 
   return (
     <Card className={classes.card}>
       <HomeHeader result={result} search={search} onSearchChange={setSearch} />
-      <HomeContent result={result} />
+      <HomeContent result={result} onLoadMore={loadMore} />
     </Card>
   )
 }
