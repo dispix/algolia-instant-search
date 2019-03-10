@@ -68,7 +68,7 @@ const useSearch = (
       .finally(() => {
         setLoading(false)
       })
-  }, [page])
+  }, [query, page])
 
   return { result, loading, error, loadMore }
 }
