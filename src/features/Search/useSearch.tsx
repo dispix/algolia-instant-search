@@ -1,6 +1,7 @@
-import * as React from "react"
-import { searchContext } from "./SearchProvider"
 import algoliasearch from "algoliasearch"
+import * as React from "react"
+
+import { searchContext } from "./SearchProvider"
 
 export interface UseSearchResultItem {
   category: string

@@ -1,5 +1,5 @@
-import * as React from "react"
 import Avatar from "@material-ui/core/Avatar"
+import * as React from "react"
 
 export interface SearchResultItemAvatarProps {
   image: string

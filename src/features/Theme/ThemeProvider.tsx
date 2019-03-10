@@ -1,9 +1,11 @@
-import * as React from "react"
+import { createMuiTheme, Theme as MuiTheme } from "@material-ui/core/styles"
 import MuiThemeProvider, {
   ThemeProviderProps as MuiThemeProviderProps,
 } from "@material-ui/styles/ThemeProvider"
-import { createMuiTheme, Theme as MuiTheme } from "@material-ui/core/styles"
+import * as React from "react"
+
 import { Omit } from "../../utils/Omit"
+
 import { SPACING } from "./constants"
 
 export type ThemeProviderProps = Omit<MuiThemeProviderProps, "theme">
@@ -16,8 +18,8 @@ const theme = createMuiTheme({
   },
 })
 
-const ThemeProvider = (props: ThemeProviderProps) => {
-  return <MuiThemeProvider {...props} theme={theme} />
-}
+const ThemeProvider = (props: ThemeProviderProps) => (
+  <MuiThemeProvider {...props} theme={theme} />
+)
 
 export default ThemeProvider

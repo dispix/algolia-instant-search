@@ -1,10 +1,11 @@
-import * as React from "react"
-import { makeStyles } from "@material-ui/styles"
 import Card from "@material-ui/core/Card"
+import { makeStyles } from "@material-ui/styles"
+import * as React from "react"
 
 import { useSearch } from "../../features/Search"
-import HomeHeader from "./HomeHeader"
+
 import HomeContent from "./HomeContent"
+import HomeHeader from "./HomeHeader"
 
 const useStyles = makeStyles({
   card: {

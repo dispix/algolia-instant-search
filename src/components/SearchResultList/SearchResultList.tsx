@@ -1,4 +1,5 @@
 import * as React from "react"
+
 import SearchResultItem, {
   SearchResultItemProps,
 } from "../SearchResultItem/SearchResultItem"

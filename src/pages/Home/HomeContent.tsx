@@ -1,6 +1,6 @@
-import * as React from "react"
-import { makeStyles } from "@material-ui/styles"
 import CardContent from "@material-ui/core/CardContent"
+import { makeStyles } from "@material-ui/styles"
+import * as React from "react"
 
 import SearchResultList from "../../components/SearchResultList"
 import { UseSearchResult } from "../../features/Search"

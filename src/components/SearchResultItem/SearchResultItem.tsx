@@ -1,9 +1,10 @@
-import * as React from "react"
 import CardHeader from "@material-ui/core/CardHeader"
+import { makeStyles } from "@material-ui/styles"
+import * as React from "react"
+
+import { Theme } from "../../features/Theme"
 
 import SearchResultItemAvatar from "./SearchResultItemAvatar"
-import { makeStyles } from "@material-ui/styles"
-import { Theme } from "../../features/Theme"
 
 export interface SearchResultItemProps {
   category: string

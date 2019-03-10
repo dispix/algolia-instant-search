@@ -1,7 +1,8 @@
-import * as React from "react"
-import { UseSearchResult } from "../../features/Search"
 import CardHeader from "@material-ui/core/CardHeader"
+import * as React from "react"
+
 import SearchInput, { SearchInputProps } from "../../components/SearchInput"
+import { UseSearchResult } from "../../features/Search"
 
 type ChangeHandler = NonNullable<SearchInputProps["onChange"]>
 
