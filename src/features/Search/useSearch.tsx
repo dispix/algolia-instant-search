@@ -44,31 +44,33 @@ const useSearch = (
   }, [query])
 
   React.useEffect(() => {
+    let cancel = false
     setLoading(true)
     setError(false)
+
     search
       .search<UseSearchResultItem>({ query, hitsPerPage, page })
-      .then(response => {
-        setResult(
-          produce(current => {
-            if (!current || page === 0) {
-              return response
-            }
-            current.hits.push(...response.hits)
-            current.page = response.page
-            current.cursor = response.cursor
-          }),
-        )
-      })
-      .catch(err => {
-        // tslint:disable-next-line:no-console
-        console.error(err)
-        setError(true)
-      })
-      .finally(() => {
-        setLoading(false)
-      })
-  }, [query, page])
+      .then(
+        response =>
+          !cancel &&
+          setResult(
+            produce(current => {
+              if (!current || page === 0) {
+                return response
+              }
+              current.hits.push(...response.hits)
+              current.page = response.page
+              current.cursor = response.cursor
+            }),
+          ),
+      )
+      .catch(() => !cancel && setError(true))
+      .finally(() => !cancel && setLoading(false))
+
+    return () => {
+      cancel = true
+    }
+  }, [query, page, hitsPerPage])
 
   return { result, loading, error, loadMore }
 }
