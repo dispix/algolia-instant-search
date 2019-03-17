@@ -1,6 +1,7 @@
 import CardHeader from "@material-ui/core/CardHeader"
 import * as React from "react"
 
+import algoliaBlueMark from "../../assets/algolia-blue-mark.svg"
 import SearchInput, { SearchInputProps } from "../../components/SearchInput"
 import { UseSearchResult } from "../../features/Search"
 
@@ -21,6 +22,7 @@ const HomeHeader = ({ result, onSearchChange, search }: HomeHeaderProps) => {
     <React.Fragment>
       <CardHeader title="Search the App store" />
       <CardHeader
+        avatar={<img src={algoliaBlueMark} height={24} alt="algolia logo" />}
         title={
           <SearchInput
             value={search}
