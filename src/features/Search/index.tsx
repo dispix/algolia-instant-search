@@ -1,4 +1,6 @@
-export * from './useSearch'
-export { default as useSearch } from './useSearch'
-export * from './SearchProvider'
-export { default } from './SearchProvider'
+export * from "./useSearch"
+export { default as useSearch } from "./useSearch"
+export * from "./useCategories"
+export { default as useCategories } from "./useCategories"
+export * from "./SearchProvider"
+export { default } from "./SearchProvider"
