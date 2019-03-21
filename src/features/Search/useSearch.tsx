@@ -4,9 +4,7 @@ import * as React from "react"
 
 import { searchContext } from "./SearchProvider"
 
-export interface UseSearchOptions {
-  hitsPerPage?: number
-}
+export type UseSearchOptions = algoliasearch.QueryParameters
 
 export interface UseSearchResultItem {
   category: string
