@@ -9,7 +9,8 @@ import CategorySelectorInput from "./CategorySelectorInput"
 import CategorySelectorItem from "./CategorySelectorItem"
 
 interface CategorySelectorProps {
-  onSelect: (category: string) => void
+  selected: string | null
+  onSelect: (category: string | null) => void
 }
 
 const useStyles = makeStyles(theme => ({
@@ -30,39 +31,34 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const CategorySelector = ({ onSelect }: CategorySelectorProps) => {
+const CategorySelector = ({ selected, onSelect }: CategorySelectorProps) => {
   const classes = useStyles()
   const [search, setSearch] = React.useState("")
   const { result } = useCategories(search)
 
-  const handleInputValueChange = React.useCallback(val => {
-    setSearch(val)
-  }, [])
+  const clearSelected = React.useCallback(onSelect.bind(null, null), [])
 
   return (
     <Downshift
       inputValue={search}
-      onInputValueChange={handleInputValueChange}
+      onInputValueChange={setSearch}
       onSelect={onSelect}
+      selectedItem={selected}
     >
       {({
         getInputProps,
         getItemProps,
         getMenuProps,
         highlightedIndex,
-        inputValue,
         isOpen,
         selectedItem,
-        openMenu,
       }) => (
         <div className={classes.container}>
           <CategorySelectorInput
-            label="Category"
             inputProps={getInputProps()}
-            onFocus={openMenu}
-            value={inputValue!}
+            iconButtonProps={{ onClick: clearSelected }}
           />
-          {isOpen && result ? (
+          {isOpen && result && (
             <Paper {...getMenuProps()} className={classes.paper}>
               {result.facetHits.map((category, index) => (
                 <CategorySelectorItem
@@ -77,7 +73,7 @@ const CategorySelector = ({ onSelect }: CategorySelectorProps) => {
                 />
               ))}
             </Paper>
-          ) : null}
+          )}
         </div>
       )}
     </Downshift>
