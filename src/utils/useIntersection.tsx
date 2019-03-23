@@ -1,6 +1,6 @@
-import * as React from "react"
 // include polyfil for non-supported browsers
-require("intersection-observer")
+import "intersection-observer"
+import * as React from "react"
 
 function useIntersection(
   target: HTMLElement | null,
