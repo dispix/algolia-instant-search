@@ -21,11 +21,25 @@ const useStyles = makeStyles({
 const Home = () => {
   const classes = useStyles()
   const [search, setSearch] = React.useState("")
-  const { result, loadMore } = useSearch(search)
+  const [category, setCategory] = React.useState<null | string>(null)
+
+  const options = React.useMemo(
+    () => ({
+      facetFilters: category ? [`category:${category}`] : [],
+    }),
+    [category],
+  )
+  const { result, loadMore } = useSearch(search, options)
 
   return (
     <Card className={classes.card}>
-      <HomeHeader result={result} search={search} onSearchChange={setSearch} />
+      <HomeHeader
+        result={result}
+        search={search}
+        onSearchChange={setSearch}
+        category={category}
+        onCategoryChange={setCategory}
+      />
       <HomeContent result={result} onLoadMore={loadMore} />
     </Card>
   )
