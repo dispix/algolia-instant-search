@@ -32,14 +32,13 @@ const useSearch = (
   const [error, setError] = React.useState(false)
   const [page, setPage] = React.useState(0)
 
-  const hitsPerPage = options.hitsPerPage || defaultOptions.hitsPerPage!
   const loadMore = React.useCallback(() => {
     setPage(p => p + 1)
   }, [])
 
   React.useEffect(() => {
     setPage(0)
-  }, [query])
+  }, [query, options])
 
   React.useEffect(() => {
     let cancel = false
@@ -47,7 +46,12 @@ const useSearch = (
     setError(false)
 
     search
-      .search<UseSearchResultItem>({ query, hitsPerPage, page })
+      .search<UseSearchResultItem>({
+        ...defaultOptions,
+        ...options,
+        query,
+        page,
+      })
       .then(
         response =>
           !cancel &&
@@ -68,7 +72,7 @@ const useSearch = (
     return () => {
       cancel = true
     }
-  }, [query, page, hitsPerPage])
+  }, [query, page, options])
 
   return { result, loading, error, loadMore }
 }
