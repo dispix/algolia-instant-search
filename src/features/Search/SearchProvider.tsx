@@ -9,7 +9,7 @@ export interface SearchContext {
   client: algoliasearch.Client
 }
 
-const client = algoliasearch("PCXK4F6V51", "bd577cf0c53a715595b454d7bef8b372")
+const client = algoliasearch("PCXK4F6V51", process.env.REACT_APP_API_KEY!)
 const index = client.initIndex("apple_app_store_test")
 export const searchContext = React.createContext(index)
 
